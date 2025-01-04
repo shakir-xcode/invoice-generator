@@ -12,12 +12,12 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import ProviderData from "./providerData";
-import ClientData from "./clientData";
-import { Input } from "./ui/input";
 import { useEffect, useState } from "react";
 import ProductsNew from "./productsNew";
 import LogoUpload from "./logoUpload";
+import { Label } from "./ui/label";
+import { Textarea } from "./ui/textarea";
+import AmountCalculator from "./amountCalculator";
 
 const FormSchema = z.object({
   // logo: z
@@ -47,22 +47,24 @@ export function InvoiceForm() {
   const form = useForm({
     // resolver: zodResolver(FormSchema),
     defaultValues: {
-      // logo: null,
-      from_name: "",
-      from_address: "",
-      from_email: "",
-      from_phone: "",
-      from_website: "",
-
-      client_name: "",
-      client_address: "",
-      client_email: "",
-      client_phone: "",
+      logo: null,
+      company_details: "",
+      client_details: "",
       products: [{ description: "", rate: "", quantity: "", total: "" }],
+      subtotal: 0,
     },
   });
 
-  const { register, setValue, watch, control } = form;
+  const selectedCurrency = "$";
+  const selectedCurrencyLabel = "usd";
+
+  const {
+    register,
+    setValue,
+    watch,
+    control,
+    formState: { errors },
+  } = form;
 
   // const rate = watch("products.0.rate");
   // const quantity = watch("products.0.quantity");
@@ -114,19 +116,58 @@ export function InvoiceForm() {
           onSubmit={form.handleSubmit(onSubmit)}
           className="border space-y-8"
         >
-          <div className="max-w-[320px] ">
-            <h2 className="text-2xl text-bold">Logo </h2>
+          <div className="">
             <LogoUpload setValue={setValue} register={register} />
           </div>
           <div className="flex flex-col md:flex-row justify-between gap-5  border">
-            <div className="max-w-[320px] ">
-              <h2 className="text-2xl text-bold">From </h2>
-              <ProviderData form={form} />
+            <div className="w-full  md:w-[40%] ">
+              <div className="grid w-full gap-1.5">
+                <Label htmlFor="message" className="text-xl text-bold">
+                  Your Company Details
+                </Label>
+                <Textarea
+                  className="h-32 resize-none"
+                  placeholder="Enter details here."
+                  id="message"
+                  {...register("company_details", {
+                    required: "Details are required",
+                    minLength: {
+                      value: 6,
+                      message: "Details must be at least 6 characters",
+                    },
+                  })}
+                />
+                {errors.company_details && (
+                  <p className="text-sm text-red-500">
+                    {errors?.company_details?.message}
+                  </p>
+                )}
+              </div>
             </div>
 
-            <div className="max-w-[320px]">
-              <h2 className="text-2xl text-bold">Client</h2>
-              <ClientData form={form} />
+            <div className="w-full  md:w-[40%] ">
+              <div className="grid w-full gap-1.5">
+                <Label htmlFor="message" className="text-xl text-bold">
+                  Bill To
+                </Label>
+                <Textarea
+                  className="h-32 resize-none"
+                  placeholder="Enter details here."
+                  id="message"
+                  {...register("client_details", {
+                    required: "Details are required",
+                    minLength: {
+                      value: 6,
+                      message: "Details must be at least 6 characters",
+                    },
+                  })}
+                />
+                {errors.client_details && (
+                  <p className="text-sm text-red-500">
+                    {errors?.client_details?.message}
+                  </p>
+                )}
+              </div>
             </div>
           </div>
 
@@ -137,7 +178,11 @@ export function InvoiceForm() {
             append={append}
             register={register}
             remove={remove}
+            selectedCurrency={selectedCurrency}
+            selectedCurrencyLabel={selectedCurrencyLabel}
           />
+
+          <AmountCalculator {...form} />
 
           <Button type="submit">Submit</Button>
         </form>

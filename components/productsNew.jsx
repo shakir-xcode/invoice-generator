@@ -3,10 +3,14 @@
 import React from "react";
 import { Button } from "./ui/button";
 
-const ProductsNew = ({ fields, append, remove, register }) => {
-  const selectedCurrency = "$";
-  const selectedCurrencyLabel = "usd";
-
+const ProductsNew = ({
+  fields,
+  append,
+  remove,
+  register,
+  selectedCurrency,
+  selectedCurrencyLabel,
+}) => {
   return (
     <div>
       <h1 className="block md:hidden text-xl">Products</h1>

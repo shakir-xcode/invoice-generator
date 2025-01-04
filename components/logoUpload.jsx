@@ -1,15 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
-
-import { Button } from "@/components/ui/button";
 import {
-  Form,
   FormControl,
-  FormField,
   FormItem,
   FormLabel,
   FormMessage,
@@ -30,9 +23,14 @@ export default function LogoUpload({ setValue, register }) {
 
   return (
     <>
-      <FormItem className="relative border w-[160px] h-[160px]">
+      <FormItem className="relative border w-[160px] h-[160px] ">
+        <div className=" text-gray-400/45 text-5xl absolute top-[35%] left-[15%]">
+          Logo
+        </div>
+        <FormLabel className="flex justify-center items-center absolute inset-0 z-50 "></FormLabel>
         <FormControl>
           <Input
+            className=" invisible"
             type="file"
             accept="image/*"
             {...register("logo", {
@@ -43,11 +41,11 @@ export default function LogoUpload({ setValue, register }) {
         <FormMessage />
 
         {imagePreview && (
-          <div className="mt-4">
+          <div className=" absolute inset-0 -top-2">
             <img
               src={imagePreview}
-              alt="Preview"
-              className="h-32 w-32 object-cover"
+              alt=""
+              className="h-full w-full object-cover"
             />
           </div>
         )}
