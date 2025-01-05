@@ -18,6 +18,7 @@ import LogoUpload from "./logoUpload";
 import { Label } from "./ui/label";
 import { Textarea } from "./ui/textarea";
 import AmountCalculator from "./amountCalculator";
+import { getSubtotal, getTotal } from "@/lib/calculations";
 
 const FormSchema = z.object({
   // logo: z
@@ -50,8 +51,15 @@ export function InvoiceForm() {
       logo: null,
       company_details: "",
       client_details: "",
-      products: [{ description: "", rate: "", quantity: "", total: "" }],
+      products: [{ description: "", rate: 0, quantity: 0, amount: 0 }],
       subtotal: 0,
+      tax: 0,
+      discount: 0,
+      shipping: 0,
+      total: 43,
+      date: "",
+      due_date: "",
+      invoice_number: Date.now().toString().split("").slice(3).join(""),
     },
   });
 
@@ -61,31 +69,40 @@ export function InvoiceForm() {
   const {
     register,
     setValue,
+    getValues,
     watch,
     control,
     formState: { errors },
   } = form;
 
-  // const rate = watch("products.0.rate");
-  // const quantity = watch("products.0.quantity");
-
-  // useEffect(() => {
-  //   const calculatedTotal = rate * quantity;
-  //   setValue("products.0.total", calculatedTotal || 0); // Dynamically update total
-  // }, [rate, quantity, setValue]);
-
   const watchedProducts = useWatch({ control, name: "products" });
 
   useEffect(() => {
     watchedProducts.forEach((product, index) => {
-      const calculatedTotal = (product?.rate || 0) * (product?.quantity || 0);
-
+      const calculatedAmount = (
+        (parseFloat(product?.rate) || 0) * (parseFloat(product?.quantity) || 0)
+      ).toFixed(2);
       // Only update if the total is incorrect
-      if (product?.total !== calculatedTotal) {
-        setValue(`products.${index}.total`, calculatedTotal || 0);
+      if (product?.amount !== calculatedAmount) {
+        setValue(`products.${index}.amount`, calculatedAmount || 0);
+        // console.log("total : ", getValues("total"));
       }
     });
+    setValue(`subtotal`, getSubtotal(watchedProducts));
   }, [watchedProducts, setValue]);
+
+  const subtotal = watch("subtotal");
+  const tax = watch("tax");
+  const discount = watch("discount");
+  const shipping = watch("shipping");
+
+  useEffect(() => {
+    const calculatedTotal = parseFloat(
+      getTotal(subtotal, tax, discount, shipping)
+    ).toFixed(2);
+    if (getValues("total") !== calculatedTotal)
+      setValue("total", calculatedTotal || 0);
+  }, [subtotal, tax, discount, shipping, setValue]);
 
   const [imagePreview, setImagePreview] = useState(null);
 
@@ -112,23 +129,19 @@ export function InvoiceForm() {
   return (
     <>
       <Form {...form}>
-        <form
-          onSubmit={form.handleSubmit(onSubmit)}
-          className="border space-y-8"
-        >
-          <div className="">
-            <LogoUpload setValue={setValue} register={register} />
-          </div>
+        <form onSubmit={form.handleSubmit(onSubmit)} className=" space-y-8">
+          <LogoUpload {...form} />
+
           <div className="flex flex-col md:flex-row justify-between gap-5  border">
             <div className="w-full  md:w-[40%] ">
               <div className="grid w-full gap-1.5">
-                <Label htmlFor="message" className="text-xl text-bold">
+                <Label htmlFor="company-details" className="text-xl text-bold">
                   Your Company Details
                 </Label>
                 <Textarea
                   className="h-32 resize-none"
                   placeholder="Enter details here."
-                  id="message"
+                  id="company-details"
                   {...register("company_details", {
                     required: "Details are required",
                     minLength: {
@@ -147,13 +160,13 @@ export function InvoiceForm() {
 
             <div className="w-full  md:w-[40%] ">
               <div className="grid w-full gap-1.5">
-                <Label htmlFor="message" className="text-xl text-bold">
+                <Label htmlFor="client-details" className="text-xl text-bold">
                   Bill To
                 </Label>
                 <Textarea
                   className="h-32 resize-none"
                   placeholder="Enter details here."
-                  id="message"
+                  id="client-details"
                   {...register("client_details", {
                     required: "Details are required",
                     minLength: {
@@ -171,8 +184,6 @@ export function InvoiceForm() {
             </div>
           </div>
 
-          {/* <div className=" border">
-        </div> */}
           <ProductsNew
             fields={fields}
             append={append}
@@ -182,13 +193,11 @@ export function InvoiceForm() {
             selectedCurrencyLabel={selectedCurrencyLabel}
           />
 
-          <AmountCalculator {...form} />
+          <AmountCalculator {...form} selectedCurrency={selectedCurrency} />
 
           <Button type="submit">Submit</Button>
         </form>
       </Form>
-
-      {/* <ProductDescription form={form} /> */}
     </>
   );
 }

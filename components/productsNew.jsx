@@ -51,6 +51,8 @@ const ProductsNew = ({
 
               <td className=" w-[20%] md:w-[12.5%] ">
                 <input
+                  step="any"
+                  min="0"
                   type="number"
                   {...register(`products.${index}.quantity`)}
                   placeholder="Quantity"
@@ -62,6 +64,8 @@ const ProductsNew = ({
               </td>
               <td className=" w-[20%] md:w-[12.5%] border rounded flex items-center">
                 <input
+                  step="any"
+                  min="0"
                   type="number"
                   {...register(`products.${index}.rate`)}
                   placeholder="Rate"
@@ -69,19 +73,20 @@ const ProductsNew = ({
                 />
               </td>
 
-              <td className="w-[20%] md:w-[12.5%]  flex items-center">
+              <td className=" w-[150px] md:w-[17%] lg:w-[12.5%]  flex items-center">
                 <p className="pl-2 flex gap-3">
                   <span className="text-slate-500 block md:hidden text-md">
                     =
                   </span>
-                  <span>{` ${selectedCurrencyLabel}`}</span>
+                  <span>{` ${selectedCurrency}`}</span>
                 </p>
                 <input
                   disabled
+                  min="0"
                   type="number"
-                  {...register(`products.${index}.total`)}
-                  placeholder="Total"
-                  className="  w-full rounded pl-2 py-2 grow bg-transparent "
+                  {...register(`products.${index}.amount`)}
+                  placeholder="0"
+                  className="  w-full rounded pl-2 py-2 grow bg-transparent"
                 />
               </td>
 
