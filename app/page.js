@@ -11,9 +11,8 @@ export default function Home() {
         <ModeToggle />
       </header>
       <main className=" container mx-auto min-h-screen px-3">
-        <section className="max-w-[1020px]">
+        <section className="max-w-[1020px] mx-auto">
           <InvoiceForm />
-          {/* <NewTest /> */}
         </section>
       </main>
       <footer>

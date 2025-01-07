@@ -2,14 +2,14 @@
 
 import React from "react";
 import { Button } from "./ui/button";
+import { CirclePlus } from "lucide-react";
 
-const ProductsNew = ({
+const ProductDetails = ({
   fields,
   append,
   remove,
   register,
   selectedCurrency,
-  selectedCurrencyLabel,
 }) => {
   return (
     <div>
@@ -23,14 +23,8 @@ const ProductsNew = ({
           >
             <th className="w-[57%] font-semibold text-start ">Product</th>
             <th className="w-[13.5%] font-semibold text-start ">Quantity</th>
-            <th className="w-[12.5%] font-semibold text-start ">
-              Rate&nbsp;
-              {/* <span>{`( ${selectedCurrency} )`}</span> */}
-            </th>
-            <th className="w-[15%] font-semibold pl-4 ">
-              Amount&nbsp;
-              {/* <span>{`( ${selectedCurrency} )`}</span> */}
-            </th>
+            <th className="w-[12.5%] font-semibold text-start ">Rate&nbsp;</th>
+            <th className="w-[15%] font-semibold pl-4 ">Amount&nbsp;</th>
           </tr>
         </thead>
 
@@ -73,12 +67,12 @@ const ProductsNew = ({
                 />
               </td>
 
-              <td className=" w-[150px] md:w-[17%] lg:w-[12.5%]  flex items-center">
+              <td className="border rounded w-[150px] md:w-[18%] lg:grow lg:w-[12.5%]  flex items-center">
                 <p className="pl-2 flex gap-3">
                   <span className="text-slate-500 block md:hidden text-md">
                     =
                   </span>
-                  <span>{` ${selectedCurrency}`}</span>
+                  <span>{` ${selectedCurrency || ""}`}</span>
                 </p>
                 <input
                   disabled
@@ -109,12 +103,14 @@ const ProductsNew = ({
       <Button
         type="button"
         onClick={() => append({ description: "", rate: "", quantity: "" })}
-        className=" px-2.5 mt-2 transition duration-300"
+        className=" px-2.5 mt-2 transition duration-300 "
       >
-        <span className=" text-xl">+</span> Add Item
+        <CirclePlus />
+        {/* <span className=" text-xl">+</span> */}
+        Add Item
       </Button>
     </div>
   );
 };
 
-export default ProductsNew;
+export default ProductDetails;

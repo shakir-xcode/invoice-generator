@@ -20,7 +20,7 @@ const DatePicker = ({ control, role }) => {
         control={control}
         name={role}
         render={({ field }) => (
-          <FormItem className="flex flex-wrap gap-5  items-baseline max-w-[350px] justify-between">
+          <FormItem className=" flex flex-wrap gap-5 items-baseline justify-between">
             <FormLabel className=" capitalize">
               {role.split("_").length === 1 ? "Invoice Date" : "Due Date"}
             </FormLabel>

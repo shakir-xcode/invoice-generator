@@ -10,8 +10,9 @@ import {
 import { Input } from "@/components/ui/input";
 import { Controller } from "react-hook-form";
 import DatePicker from "./datePicker";
+import { Upload } from "lucide-react";
 
-export default function LogoUpload({ register, control, setValue }) {
+export default function LogoDate({ register, control }) {
   const [imagePreview, setImagePreview] = useState(null);
 
   const handleImageChange = (event) => {
@@ -22,12 +23,16 @@ export default function LogoUpload({ register, control, setValue }) {
   };
 
   return (
-    <div className="border flex flex-col md:flex-row gap-7 justify-between">
-      <FormItem className="relative border w-[160px] h-[160px] ">
-        <div className=" text-gray-400/45 text-5xl absolute top-[35%] left-[15%]">
-          Logo
+    <div className="flex flex-col md:flex-row gap-7 justify-between">
+      <FormItem
+        className="relative border border-gray-400/25 rounded-md w-[160px] h-[160px]
+       hover:bg-[rgb(68,68,68,0.1)] transition-colors duration-100"
+      >
+        <div className="  flex flex-col gap-3 items-center text-gray-400/45 text-xl absolute top-[30%] left-[16%]">
+          <Upload />
+          <span>Select Logo</span>
         </div>
-        <FormLabel className="flex justify-center items-center absolute inset-0 z-50 "></FormLabel>
+        <FormLabel className="flex justify-center items-center absolute inset-0 z-50 cursor-pointer "></FormLabel>
         <FormControl>
           <Input
             className=" invisible"
@@ -51,15 +56,15 @@ export default function LogoUpload({ register, control, setValue }) {
         )}
       </FormItem>
 
-      <div>
+      <div className="w-full -mt-2 sm:w-[370px] flex flex-col justify-between my-6">
         <DatePicker control={control} role="date" />
 
         <Controller
           name="invoice_number"
           control={control}
           render={({ field }) => (
-            <FormItem className="flex gap-5 items-baseline max-w-[350px] justify-between">
-              <FormLabel className=" text-sm">Invoice Number</FormLabel>
+            <FormItem className="  flex gap-5 items-baseline  justify-between">
+              <FormLabel className=" text-sm">Invoice No.</FormLabel>
               <FormControl className=" ">
                 <Input {...field} className="max-w-[64%]" />
               </FormControl>
