@@ -10,7 +10,7 @@ export default function Home() {
         <h1>Header</h1>
         <ModeToggle />
       </header>
-      <main className=" container mx-auto min-h-screen px-3">
+      <main className=" container mx-auto min-h-screen px-3 my-10">
         <section className="max-w-[1020px] mx-auto">
           <InvoiceForm />
         </section>

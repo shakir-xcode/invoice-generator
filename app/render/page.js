@@ -1,6 +1,10 @@
-"use client"
+"use server"
 import React from 'react'
+import ReactPDF from '@react-pdf/renderer';
 import { Document, Page, Text, View, StyleSheet, PDFViewer } from '@react-pdf/renderer';
+import InvoicePDF from './_components/invPdf';
+import SecondePdfTemplate from './_components/secondTemplate';
+import Download from './_components/download';
 
 
 // Create styles
@@ -31,12 +35,11 @@ const MyDocument = () => (
 );
 
 const page = () => {
-    return (
-        <div className='border-2 border-red-600 w-[700px] h-[900px]'>
 
-            <PDFViewer>
-                <MyDocument />
-            </PDFViewer>
+    return (
+        <div className=''>
+            <SecondePdfTemplate />
+            <Download />
         </div>
 
     )
