@@ -7,7 +7,7 @@ import { useEffect } from "react";
 import ProductDetails from "./productDetails";
 import LogoDate from "./logoDate";
 import AmountCalculator from "./amountCalculator";
-import { getSubtotal, getTotal } from "@/lib/calculations";
+import { getBalanceDue, getSubtotal, getTotal } from "@/lib/calculations";
 import CompanyDetails from "./companyDetails";
 
 export function InvoiceForm() {
@@ -19,9 +19,12 @@ export function InvoiceForm() {
       products: [{ description: "", rate: 0, quantity: 0, amount: 0 }],
       subtotal: 0,
       tax: 0,
+      tax_value: "",
       discount: 0,
       shipping: 0,
-      total: 43,
+      total: 0,
+      amount_paid: 0,
+      balance_due: 0,
       date: "",
       due_date: "",
       invoice_number: Date.now().toString().split("").slice(3).join(""),
@@ -35,6 +38,7 @@ export function InvoiceForm() {
 
   const watchedProducts = useWatch({ control, name: "products" });
 
+  // Products
   useEffect(() => {
     watchedProducts.forEach((product, index) => {
       const calculatedAmount = (
@@ -54,14 +58,28 @@ export function InvoiceForm() {
   const discount = watch("discount");
   const shipping = watch("shipping");
   const currency = watch("currency");
+  const total = watch("total");
+  const amount_paid = watch("amount_paid");
 
+  // Total
   useEffect(() => {
-    const calculatedTotal = parseFloat(
-      getTotal(subtotal, tax, discount, shipping)
-    ).toFixed(2);
+    const [taxValue, _total] = getTotal(subtotal, tax, discount, shipping);
+    const calculatedTotal = parseFloat(_total).toFixed(2);
     if (getValues("total") !== calculatedTotal)
       setValue("total", calculatedTotal || 0);
+
+    if (getValues("tax_value") !== taxValue)
+      setValue("tax_value", taxValue || 0);
   }, [subtotal, tax, discount, shipping, setValue]);
+
+  // Balance Due
+  useEffect(() => {
+    console.log("triggered...");
+    const balanceDue = parseFloat(getBalanceDue(total, amount_paid)).toFixed(2);
+    if (getValues("balance_due") !== balanceDue) {
+      setValue("balance_due", balanceDue || 0);
+    }
+  }, [amount_paid, total, setValue]);
 
   const { fields, append, remove } = useFieldArray({
     control,
@@ -69,8 +87,18 @@ export function InvoiceForm() {
   });
 
   function onSubmit(data) {
-    console.log(data);
-    alert(JSON.stringify(data));
+    // console.log(data);
+    // alert(JSON.stringify(data));
+    sendInoviceData(data);
+  }
+
+  async function sendInoviceData(data) {
+    const res = await fetch("/api/handleInvoice", {
+      method: "POST",
+      body: JSON.stringify(data),
+    });
+    const responseData = await res.json();
+    console.log(responseData);
   }
 
   return (

@@ -115,6 +115,19 @@ const AmountCalculator = ({ control, selectedCurrency, register }) => {
         />
 
         <Controller
+          name="tax_value"
+          hidden={true}
+          control={control}
+          render={({ field }) => (
+            <FormItem className="relative flex gap-5 items-baseline justify-between">
+              <FormControl className=" ">
+                <Input {...field} type="hidden" />
+              </FormControl>
+            </FormItem>
+          )}
+        />
+
+        <Controller
           name="discount"
           control={control}
           render={({ field }) => (
@@ -135,7 +148,10 @@ const AmountCalculator = ({ control, selectedCurrency, register }) => {
           control={control}
           render={({ field }) => (
             <FormItem className="flex gap-5 items-baseline justify-between">
-              <FormLabel className=" text-sm">Shipping fee</FormLabel>
+              <FormLabel className=" text-sm">
+                Shipping fee{" "}
+                <span className=" text-sm">({selectedCurrency || ""})</span>
+              </FormLabel>
               <FormControl className=" ">
                 <Input {...field} className="max-w-[64%]" />
               </FormControl>
@@ -147,8 +163,40 @@ const AmountCalculator = ({ control, selectedCurrency, register }) => {
           name="total"
           control={control}
           render={({ field }) => (
-            <FormItem className="text-md font-bold flex gap-5 items-baseline justify-between mt-6">
+            <FormItem className="text-md flex gap-5 items-baseline justify-between">
               <div className=" ">Total</div>
+              <FormControl>
+                <div className=" flex gap-1.5">
+                  <span>{selectedCurrency || ""}</span>
+                  <span>{field.value}</span>
+                </div>
+              </FormControl>
+            </FormItem>
+          )}
+        />
+
+        <Controller
+          name="amount_paid"
+          control={control}
+          render={({ field }) => (
+            <FormItem className="flex gap-5 items-baseline justify-between">
+              <FormLabel className=" text-sm">
+                Amount Paid{" "}
+                <span className=" text-sm">({selectedCurrency || ""})</span>
+              </FormLabel>
+              <FormControl className=" ">
+                <Input {...field} className="max-w-[64%]" />
+              </FormControl>
+            </FormItem>
+          )}
+        />
+
+        <Controller
+          name="balance_due"
+          control={control}
+          render={({ field }) => (
+            <FormItem className="text-md font-bold flex gap-5 items-baseline justify-between ">
+              <div className=" ">Balance Due</div>
               <FormControl>
                 <div className=" flex gap-1.5">
                   <span>{selectedCurrency || ""}</span>
