@@ -3,12 +3,13 @@
 import { useForm, useFieldArray, useWatch } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import ProductDetails from "./productDetails";
 import LogoDate from "./logoDate";
 import AmountCalculator from "./amountCalculator";
 import { getBalanceDue, getSubtotal, getTotal } from "@/lib/calculations";
 import CompanyDetails from "./companyDetails";
+import { formatData } from "@/lib/formatInvoiceData";
 
 export function InvoiceForm() {
   const form = useForm({
@@ -34,9 +35,37 @@ export function InvoiceForm() {
     },
   });
 
-  const { register, setValue, getValues, watch, control } = form;
+  const [imagePreview, setImagePreview] = useState(null);
+
+  const {
+    register,
+    setValue,
+    getValues,
+    watch,
+    control,
+    formState: { errors },
+  } = form;
 
   const watchedProducts = useWatch({ control, name: "products" });
+
+  const subtotal = watch("subtotal");
+  const tax = watch("tax");
+  const discount = watch("discount");
+  const shipping = watch("shipping");
+  const currency = watch("currency");
+  const total = watch("total");
+  const amount_paid = watch("amount_paid");
+  const logo = watch("logo");
+
+  //Logo
+  useEffect(() => {
+    if (!logo?.length || logo[0].size > 3 * 1024 * 1024) {
+      setImagePreview(null);
+      return;
+    }
+    const file = logo[0];
+    setImagePreview(URL.createObjectURL(file));
+  }, [logo, setValue]);
 
   // Products
   useEffect(() => {
@@ -47,19 +76,11 @@ export function InvoiceForm() {
       // Only update if the total is incorrect
       if (product?.amount !== calculatedAmount) {
         setValue(`products.${index}.amount`, calculatedAmount || 0);
-        // console.log("total : ", getValues("total"));
       }
     });
+
     setValue(`subtotal`, getSubtotal(watchedProducts));
   }, [watchedProducts, setValue]);
-
-  const subtotal = watch("subtotal");
-  const tax = watch("tax");
-  const discount = watch("discount");
-  const shipping = watch("shipping");
-  const currency = watch("currency");
-  const total = watch("total");
-  const amount_paid = watch("amount_paid");
 
   // Total
   useEffect(() => {
@@ -74,7 +95,6 @@ export function InvoiceForm() {
 
   // Balance Due
   useEffect(() => {
-    console.log("triggered...");
     const balanceDue = parseFloat(getBalanceDue(total, amount_paid)).toFixed(2);
     if (getValues("balance_due") !== balanceDue) {
       setValue("balance_due", balanceDue || 0);
@@ -86,28 +106,56 @@ export function InvoiceForm() {
     name: "products",
   });
 
-  function onSubmit(data) {
-    // console.log(data);
-    // alert(JSON.stringify(data));
-    sendInoviceData(data);
-  }
+  async function onSubmit(data) {
+    const formattedData = formatData(data);
 
-  async function sendInoviceData(data) {
-    const res = await fetch("/api/handleInvoice", {
-      method: "POST",
-      body: JSON.stringify(data),
-    });
-    const responseData = await res.json();
-    console.log(responseData);
+    try {
+      const formData = new FormData();
+
+      // Append regular form fields
+      const keys = Object.keys(formattedData);
+      keys.forEach((key) => {
+        if (key === "products")
+          formData.append("products", JSON.stringify(formattedData.products));
+        else formData.append(key, formattedData[key]);
+      });
+
+      const response = await fetch("/api/generate-invoice", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to send form data");
+      }
+
+      const blob = await response.blob();
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = "invoice.pdf";
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      URL.revokeObjectURL(url); // Cleanup the object URL
+    } catch (error) {
+      console.error("Error submitting form:", error.message);
+    }
   }
 
   return (
     <>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-12 ">
-          <LogoDate {...form} />
+          <LogoDate
+            register={register}
+            control={control}
+            setValue={setValue}
+            imagePreview={imagePreview}
+            errors={errors}
+          />
 
-          <CompanyDetails {...form} />
+          <CompanyDetails register={register} errors={errors} />
 
           <ProductDetails
             fields={fields}

@@ -10,16 +10,26 @@ import {
 import { Input } from "@/components/ui/input";
 import { Controller } from "react-hook-form";
 import DatePicker from "./datePicker";
-import { Upload } from "lucide-react";
+import {
+  Binary,
+  Cross,
+  CrossIcon,
+  Delete,
+  DeleteIcon,
+  LucideDelete,
+  Trash2,
+  Upload,
+} from "lucide-react";
 
-export default function LogoDate({ register, control }) {
-  const [imagePreview, setImagePreview] = useState(null);
-
-  const handleImageChange = (event) => {
-    const file = event.target.files[0];
-    if (file) {
-      setImagePreview(URL.createObjectURL(file));
-    }
+export default function LogoDate({
+  register,
+  control,
+  imagePreview,
+  setValue,
+  errors,
+}) {
+  const handleImageDelete = () => {
+    setValue("logo", null);
   };
 
   return (
@@ -29,8 +39,12 @@ export default function LogoDate({ register, control }) {
        hover:bg-[rgb(68,68,68,0.1)] transition-colors duration-100"
       >
         <div className="  flex flex-col gap-3 items-center text-gray-400/45 text-xl absolute top-[30%] left-[16%]">
-          <Upload />
-          <span>Select Logo</span>
+          {!imagePreview && (
+            <div className="flex flex-col items-center">
+              <Upload />
+              <span>Select Logo</span>
+            </div>
+          )}
         </div>
         <FormLabel className="flex justify-center items-center absolute inset-0 z-50 cursor-pointer "></FormLabel>
         <FormControl>
@@ -39,19 +53,43 @@ export default function LogoDate({ register, control }) {
             type="file"
             accept="image/*"
             {...register("logo", {
-              onChange: handleImageChange,
+              validate: {
+                checkFileType: (value) => {
+                  if (!value?.[0]) return true; //allow no logo
+                  return (
+                    value?.[0]?.type?.startsWith("image/") ||
+                    "Only image files are allowed"
+                  );
+                },
+                checkFileSize: (value) => {
+                  if (!value?.[0]) return true;
+
+                  return (
+                    value?.[0]?.size <= 2 * 1024 * 1024 || // 2MB limit
+                    "File size must not exceed 2MB"
+                  );
+                },
+              },
             })}
           />
         </FormControl>
         <FormMessage />
-
+        {errors.logo && (
+          <p className=" absolute bottom-0 px-0.5 text-sm text-red-500 text-center">
+            {errors.logo.message}
+          </p>
+        )}
         {imagePreview && (
-          <div className=" absolute inset-0 -top-2">
-            <img
-              src={imagePreview}
-              alt=""
-              className="h-full w-full object-cover"
-            />
+          <div
+            onClick={handleImageDelete}
+            className=" absolute top-0 right-1 z-50 cursor-pointer  px-0.5  text-gray-500 text-center"
+          >
+            <Trash2 size={20} />
+          </div>
+        )}
+        {imagePreview && (
+          <div className=" absolute inset-0 flex justify-center items-center -top-2 bg-gray-500/10 ">
+            <img src={imagePreview} alt="" className="object-contain" />
           </div>
         )}
       </FormItem>

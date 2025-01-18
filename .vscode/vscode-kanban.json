@@ -1,0 +1,82 @@
+{
+  "todo": [
+    {
+      "assignedTo": {
+        "name": "Shakir"
+      },
+      "creation_time": "2025-01-17T14:17:18.432Z",
+      "id": "6",
+      "references": [],
+      "title": "create homepage UI"
+    },
+    {
+      "assignedTo": {
+        "name": "Shakir"
+      },
+      "creation_time": "2025-01-17T14:11:13.749Z",
+      "id": "5",
+      "references": [],
+      "title": "popups using responses"
+    }
+  ],
+  "in-progress": [
+    {
+      "assignedTo": {
+        "name": "Shakir"
+      },
+      "creation_time": "2025-01-17T14:10:52.592Z",
+      "id": "4",
+      "references": [],
+      "title": "Form states (to disable after submission)"
+    }
+  ],
+  "testing": [
+    {
+      "assignedTo": {
+        "name": "Shakir"
+      },
+      "creation_time": "2025-01-18T16:40:06.441Z",
+      "id": "8",
+      "references": [],
+      "title": "test invoice logo"
+    }
+  ],
+  "done": [
+    {
+      "assignedTo": {
+        "name": "Shakir"
+      },
+      "creation_time": "2025-01-17T14:09:13.417Z",
+      "id": "2",
+      "references": [],
+      "title": "decouple tempates"
+    },
+    {
+      "assignedTo": {
+        "name": "Shakir"
+      },
+      "creation_time": "2025-01-17T14:07:14.695Z",
+      "id": "1",
+      "references": [],
+      "title": "image validation for base64"
+    },
+    {
+      "assignedTo": {
+        "name": "Shakir"
+      },
+      "creation_time": "2025-01-17T14:09:54.151Z",
+      "id": "3",
+      "references": [],
+      "title": "logo addition"
+    },
+    {
+      "assignedTo": {
+        "name": "Shakir"
+      },
+      "creation_time": "2025-01-18T12:32:53.210Z",
+      "id": "7",
+      "references": [],
+      "title": "logo styling"
+    }
+  ]
+}

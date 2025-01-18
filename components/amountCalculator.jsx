@@ -57,7 +57,7 @@ const AmountCalculator = ({ control, selectedCurrency, register }) => {
         />
 
         <div>
-          <Label htmlFor="terms" className=" text-md text-bold">
+          <Label htmlFor="notes" className=" text-md text-bold">
             Notes
           </Label>
           <Textarea
