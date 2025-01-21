@@ -34,8 +34,6 @@ export const POST = async (req) => {
             notes
         } = Object.fromEntries(formData);
 
-        // Ensure the 'public/uploads' directory exists
-
         const pdfBuffer = await generatePdf(
             {
                 company_details,
@@ -58,7 +56,7 @@ export const POST = async (req) => {
             logo
         )
 
-        // Send the PDF for download
+        // // Send the PDF for download
         return new NextResponse(pdfBuffer, {
             status: 200,
             headers: {
@@ -67,6 +65,13 @@ export const POST = async (req) => {
             },
         });
 
+        // return new NextResponse(
+        //     JSON.stringify({
+        //         success: false,
+        //         message: error.message,
+        //     }),
+        //     { status: 500 }
+        // )
     } catch (error) {
         console.log(error.message)
         return new NextResponse(

@@ -1,5 +1,6 @@
 {
-  "todo": [
+  "todo": [],
+  "in-progress": [
     {
       "assignedTo": {
         "name": "Shakir"
@@ -8,39 +9,9 @@
       "id": "6",
       "references": [],
       "title": "create homepage UI"
-    },
-    {
-      "assignedTo": {
-        "name": "Shakir"
-      },
-      "creation_time": "2025-01-17T14:11:13.749Z",
-      "id": "5",
-      "references": [],
-      "title": "popups using responses"
     }
   ],
-  "in-progress": [
-    {
-      "assignedTo": {
-        "name": "Shakir"
-      },
-      "creation_time": "2025-01-17T14:10:52.592Z",
-      "id": "4",
-      "references": [],
-      "title": "Form states (to disable after submission)"
-    }
-  ],
-  "testing": [
-    {
-      "assignedTo": {
-        "name": "Shakir"
-      },
-      "creation_time": "2025-01-18T16:40:06.441Z",
-      "id": "8",
-      "references": [],
-      "title": "test invoice logo"
-    }
-  ],
+  "testing": [],
   "done": [
     {
       "assignedTo": {
@@ -50,6 +21,33 @@
       "id": "2",
       "references": [],
       "title": "decouple tempates"
+    },
+    {
+      "assignedTo": {
+        "name": "Shakir"
+      },
+      "creation_time": "2025-01-19T12:27:27.225Z",
+      "id": "9",
+      "references": [],
+      "title": "fix default logo image rendering"
+    },
+    {
+      "assignedTo": {
+        "name": "Shakir"
+      },
+      "creation_time": "2025-01-19T12:58:07.567Z",
+      "id": "10",
+      "references": [],
+      "title": "fix dialog box"
+    },
+    {
+      "assignedTo": {
+        "name": "Shakir"
+      },
+      "creation_time": "2025-01-17T14:10:52.592Z",
+      "id": "4",
+      "references": [],
+      "title": "Form states (to disable after submission)"
     },
     {
       "assignedTo": {
@@ -77,6 +75,24 @@
       "id": "7",
       "references": [],
       "title": "logo styling"
+    },
+    {
+      "assignedTo": {
+        "name": "Shakir"
+      },
+      "creation_time": "2025-01-17T14:11:13.749Z",
+      "id": "5",
+      "references": [],
+      "title": "popups using responses"
+    },
+    {
+      "assignedTo": {
+        "name": "Shakir"
+      },
+      "creation_time": "2025-01-18T16:40:06.441Z",
+      "id": "8",
+      "references": [],
+      "title": "test invoice logo"
     }
   ]
 }

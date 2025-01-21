@@ -10,6 +10,7 @@ import AmountCalculator from "./amountCalculator";
 import { getBalanceDue, getSubtotal, getTotal } from "@/lib/calculations";
 import CompanyDetails from "./companyDetails";
 import { formatData } from "@/lib/formatInvoiceData";
+import { SubmissionAlertDialog } from "./submissionAlertDialog";
 
 export function InvoiceForm() {
   const form = useForm({
@@ -36,6 +37,22 @@ export function InvoiceForm() {
   });
 
   const [imagePreview, setImagePreview] = useState(null);
+
+  const [invoiceState, setInvoiceState] = useState({
+    success: 0,
+    loading: false,
+    isDialogOpen: false,
+    dialogMessage: "",
+  });
+
+  const resetInvoiceState = () => {
+    setInvoiceState({
+      success: 0,
+      loading: false,
+      isDialogOpen: false,
+      dialogMessage: "",
+    });
+  };
 
   const {
     register,
@@ -107,7 +124,15 @@ export function InvoiceForm() {
   });
 
   async function onSubmit(data) {
+    setInvoiceState({
+      success: 0,
+      loading: true,
+      isDialogOpen: false,
+      dialogMessage: "",
+    });
+    // setInvoiceState((pre) => ({ ...pre, loading: true }));
     const formattedData = formatData(data);
+    setInvoiceState((pre) => ({ ...pre, isDialogOpen: true }));
 
     try {
       const formData = new FormData();
@@ -120,13 +145,18 @@ export function InvoiceForm() {
         else formData.append(key, formattedData[key]);
       });
 
-      const response = await fetch("/api/generate-invoice", {
+      const response = await fetch("/api/generate-invoice/", {
         method: "POST",
         body: formData,
       });
 
       if (!response.ok) {
-        throw new Error("Failed to send form data");
+        setInvoiceState((pre) => ({ ...pre, success: -1 }));
+        setInvoiceState((pre) => ({
+          ...pre,
+          dialogMessage: "Could not generate Invoice",
+        }));
+        return;
       }
 
       const blob = await response.blob();
@@ -138,8 +168,20 @@ export function InvoiceForm() {
       link.click();
       link.remove();
       URL.revokeObjectURL(url); // Cleanup the object URL
+
+      setInvoiceState((pre) => ({ ...pre, loading: false }));
+      setInvoiceState((pre) => ({ ...pre, success: 1 }));
+      setInvoiceState((pre) => ({
+        ...pre,
+        dialogMessage: "Invoice generated successfully",
+      }));
     } catch (error) {
-      console.error("Error submitting form:", error.message);
+      setInvoiceState((pre) => ({ ...pre, loading: false }));
+      setInvoiceState((pre) => ({ ...pre, success: -1 }));
+      setInvoiceState((pre) => ({
+        ...pre,
+        dialogMessage: "Error submitting form",
+      }));
     }
   }
 
@@ -170,7 +212,16 @@ export function InvoiceForm() {
             {...form}
             selectedCurrency={currency.split("_")[1] || "$"}
           />
-          <Button type="submit">Submit</Button>
+          <Button type="submit" disabled={invoiceState?.loading}>
+            {invoiceState?.loading ? "Submitting" : "Submit"}
+          </Button>
+          <SubmissionAlertDialog
+            success={invoiceState.success}
+            isDialogOpen={invoiceState.isDialogOpen}
+            resetInvoiceState={resetInvoiceState}
+            setInvoiceState={setInvoiceState}
+            dialogMessage={invoiceState.dialogMessage}
+          />
         </form>
       </Form>
     </>
