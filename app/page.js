@@ -152,7 +152,7 @@ export default function Home() {
         </ScrollAnimated>
 
         <div className="  relative flex justify-center items-center container w-full h-full sm:w-1/2 px-4">
-          <Image className=" sm:block  lg:w-[]  rounded-3xl object-cover mx-auto z-10" src="/images/inv.webp" width={1536} height={1536} alt="inovice-img" />
+          <Image priority={false} className=" sm:block  lg:w-[]  rounded-3xl object-cover mx-auto z-10" src="/images/inv.webp" width={1536} height={1536} alt="inovice-img" />
         </div>
 
       </section>

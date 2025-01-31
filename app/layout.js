@@ -9,6 +9,7 @@ import {
   Github
 } from "lucide-react";
 import Header from "@/components/header";
+import Link from "next/link";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -40,41 +41,40 @@ export default function RootLayout({ children }) {
         >
           <Header />
           {children}
-          {/* Footer */}
           <footer className="py-12 bg-secondary/50 transition border-t ">
             <div className="container px-4 mx-auto ">
               <div className="grid grid-cols-1 md:grid-cols-4 gap-8 ">
                 <div>
                   <h3 className="font-bold mb-4">Company</h3>
                   <ul className="space-y-2">
-                    <li><a href="#" className="hover:gradient-text transition-all">About</a></li>
-                    <li><a href="#" className="hover:gradient-text transition-all">Careers</a></li>
-                    <li><a href="#" className="hover:gradient-text transition-all">Press</a></li>
+                    <li><Link href="#" className="hover:gradient-text transition-all">About</Link></li>
+                    <li><Link href="#" className="hover:gradient-text transition-all">Careers</Link></li>
+                    <li><Link href="#" className="hover:gradient-text transition-all">Press</Link></li>
                   </ul>
                 </div>
                 <div>
                   <h3 className="font-bold mb-4">Product</h3>
                   <ul className="space-y-2">
-                    <li><a href="#" className="hover:gradient-text transition-all">Features</a></li>
-                    <li><a href="#" className="hover:gradient-text transition-all">Pricing</a></li>
-                    <li><a href="#" className="hover:gradient-text transition-all">Security</a></li>
+                    <li><Link href="#" className="hover:gradient-text transition-all">Features</Link></li>
+                    <li><Link href="#" className="hover:gradient-text transition-all">Pricing</Link></li>
+                    <li><Link href="#" className="hover:gradient-text transition-all">Security</Link></li>
                   </ul>
                 </div>
                 <div>
                   <h3 className="font-bold mb-4">Resources</h3>
                   <ul className="space-y-2">
-                    <li><a href="#" className="hover:text-primary hover:gradient-text transition-all">Blog</a></li>
-                    <li><a href="#" className="hover:text-primary hover:gradient-text transition-all">Help Center</a></li>
-                    <li><a href="#" className="hover:text-primary hover:gradient-text transition-all">Contact</a></li>
+                    <li><Link href="#" className="hover:text-primary hover:gradient-text transition-all">Blog</Link></li>
+                    <li><Link href="#" className="hover:text-primary hover:gradient-text transition-all">Help Center</Link></li>
+                    <li><Link href="#" className="hover:text-primary hover:gradient-text transition-all">Contact</Link></li>
                   </ul>
                 </div>
                 <div className="">
                   <h3 className="font-bold mb-4">Connect</h3>
                   <div className="flex gap-4">
-                    <a href="#" className="hover:text-primary"><Twitter className="h-5 w-5 hover:text-purple-700 transition" /></a>
-                    <a href="#" className="hover:text-primary"><Facebook className="h-5 w-5 hover:text-purple-700 transition" /></a>
-                    <a href="#" className="hover:text-primary"><Instagram className="h-5 w-5 hover:text-purple-700 transition" /></a>
-                    <a href="#" className="hover:text-primary"><Github className="h-5 w-5 hover:text-purple-700 transition" /></a>
+                    <Link href="#" className="hover:text-primary"><Twitter className="h-5 w-5 hover:text-purple-700 transition" /></Link>
+                    <Link href="#" className="hover:text-primary"><Facebook className="h-5 w-5 hover:text-purple-700 transition" /></Link>
+                    <Link href="#" className="hover:text-primary"><Instagram className="h-5 w-5 hover:text-purple-700 transition" /></Link>
+                    <Link href="#" className="hover:text-primary"><Github className="h-5 w-5 hover:text-purple-700 transition" /></Link>
                   </div>
                 </div>
               </div>

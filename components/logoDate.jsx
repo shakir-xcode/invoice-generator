@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import {
   FormControl,
   FormItem,
@@ -10,16 +9,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Controller } from "react-hook-form";
 import DatePicker from "./datePicker";
-import {
-  Binary,
-  Cross,
-  CrossIcon,
-  Delete,
-  DeleteIcon,
-  LucideDelete,
-  Trash2,
-  Upload,
-} from "lucide-react";
+import { Trash2, Upload } from "lucide-react";
 
 export default function LogoDate({
   register,
