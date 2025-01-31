@@ -24,7 +24,7 @@ export function SubmissionAlertDialog({
         <AlertDialogHeader>
           <AlertDialogTitle className=" flex flex-col gap-4 md:gap-5 justify-center items-center">
             <span className="text-2xl sm:text-3xl md:text-4xl">
-              Generating Invoice {success}
+              Generating Invoice
             </span>
             {success === 0 ? (
               <div className="loader w-[50%] mx-auto"></div>
@@ -38,7 +38,7 @@ export function SubmissionAlertDialog({
           {success === 0 ? (
             <div className="mx-auto">Please Wait</div>
           ) : (
-            <AlertDialogAction className=" mx-auto">
+            <AlertDialogAction className=" mx-auto gradient-btn">
               {success === 1 ? "Done" : "Try Again"}
             </AlertDialogAction>
           )}

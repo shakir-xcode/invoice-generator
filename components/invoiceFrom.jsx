@@ -11,6 +11,7 @@ import { getBalanceDue, getSubtotal, getTotal } from "@/lib/calculations";
 import CompanyDetails from "./companyDetails";
 import { formatData } from "@/lib/formatInvoiceData";
 import { SubmissionAlertDialog } from "./submissionAlertDialog";
+import { ScrollAnimated } from "@/animation/animation-wrapper";
 
 export function InvoiceForm() {
   const form = useForm({
@@ -186,44 +187,70 @@ export function InvoiceForm() {
   }
 
   return (
-    <>
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-12 ">
-          <LogoDate
-            register={register}
-            control={control}
-            setValue={setValue}
-            imagePreview={imagePreview}
-            errors={errors}
-          />
+    <div className="container mx-auto ">
+      <div className="text-center mb-16 px-4">
+        {/* <p className="bg-clip-text text-transparent default text-2xl border w-fit px-8 py-1 rounded-full mx-auto">Featrues</p> */}
+        <h2 className="text-4xl font-bold mb-4">
+          Create Your <span className="gradient-text">Invoice</span>
+        </h2>
+        <p className="text-xl text-muted-foreground">
+          Simple tools for creating stunning invoices
+        </p>
+      </div>
+      <div className="relative border bg-secondary/50 py-12 px-4 md:px-12 rounded-lg">
+        <div className="absolute h-1.5 -z-1 left-10 right-10  rounded-full gradient-item -top-0.5" />
+        <ScrollAnimated
+          className="child-one"
+          animationClass="slide-in"
+          threshold={0.2}
+          triggerOnce={true}
+        >
+          <Form {...form}>
+            <form
+              onSubmit={form.handleSubmit(onSubmit)}
+              className="space-y-12 "
+            >
+              <LogoDate
+                register={register}
+                control={control}
+                setValue={setValue}
+                imagePreview={imagePreview}
+                errors={errors}
+              />
 
-          <CompanyDetails register={register} errors={errors} />
+              <CompanyDetails register={register} errors={errors} />
 
-          <ProductDetails
-            fields={fields}
-            append={append}
-            register={register}
-            remove={remove}
-            selectedCurrency={currency.split("_")[1] || "$"}
-            selectedCurrencyLabel={currency.split("_")[0] || "USD"}
-          />
+              <ProductDetails
+                fields={fields}
+                append={append}
+                register={register}
+                remove={remove}
+                selectedCurrency={currency.split("_")[1] || "$"}
+                selectedCurrencyLabel={currency.split("_")[0] || "USD"}
+              />
 
-          <AmountCalculator
-            {...form}
-            selectedCurrency={currency.split("_")[1] || "$"}
-          />
-          <Button type="submit" disabled={invoiceState?.loading}>
-            {invoiceState?.loading ? "Submitting" : "Submit"}
-          </Button>
-          <SubmissionAlertDialog
-            success={invoiceState.success}
-            isDialogOpen={invoiceState.isDialogOpen}
-            resetInvoiceState={resetInvoiceState}
-            setInvoiceState={setInvoiceState}
-            dialogMessage={invoiceState.dialogMessage}
-          />
-        </form>
-      </Form>
-    </>
+              <AmountCalculator
+                {...form}
+                selectedCurrency={currency.split("_")[1] || "$"}
+              />
+              <Button
+                type="submit"
+                disabled={invoiceState?.loading}
+                className="gradient-btn"
+              >
+                {invoiceState?.loading ? "Generating" : "Generate"}
+              </Button>
+              <SubmissionAlertDialog
+                success={invoiceState.success}
+                isDialogOpen={invoiceState.isDialogOpen}
+                resetInvoiceState={resetInvoiceState}
+                setInvoiceState={setInvoiceState}
+                dialogMessage={invoiceState.dialogMessage}
+              />
+            </form>
+          </Form>
+        </ScrollAnimated>
+      </div>
+    </div>
   );
 }

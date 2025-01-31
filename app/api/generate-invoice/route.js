@@ -65,13 +65,6 @@ export const POST = async (req) => {
             },
         });
 
-        // return new NextResponse(
-        //     JSON.stringify({
-        //         success: false,
-        //         message: error.message,
-        //     }),
-        //     { status: 500 }
-        // )
     } catch (error) {
         console.log(error.message)
         return new NextResponse(

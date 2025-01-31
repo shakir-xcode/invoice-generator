@@ -103,7 +103,7 @@ const ProductDetails = ({
       <Button
         type="button"
         onClick={() => append({ description: "", rate: "", quantity: "" })}
-        className=" px-2.5 mt-2 transition duration-300 "
+        className=" px-2.5 mt-2 transition duration-300 gradient-btn"
       >
         <CirclePlus />
         {/* <span className=" text-xl">+</span> */}

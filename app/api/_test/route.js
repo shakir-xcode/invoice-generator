@@ -37,41 +37,8 @@ export const POST = async (req) => {
         } = Object.fromEntries(formData);
 
         // Ensure the 'public/uploads' directory exists
-        const uploadDir = path.join(process.cwd(), "public/uploads");
-        await fs.mkdir(uploadDir, { recursive: true });
-
-        // let extension = null;
-        // let logoArrayBuffer = null;
-
-        // if (logo && logo?.name) {
-
-        //     // const fileName = logo.name;
-        //     // extension = logo.name.split('.').pop();
-        //     // const filePath = path.join(uploadDir, fileName);
-
-        //     // Save the file
-        //     // logoArrayBuffer = await logo.arrayBuffer();
-        //     // await fs.writeFile(filePath, Buffer.from(logoArrayBuffer));
-        // }
-        // console.log(company_details,
-        //     client_details,
-        //     products,
-        //     subtotal,
-        //     tax,
-        //     tax_value,
-        //     discount,
-        //     shipping,
-        //     total,
-        //     amount_paid,
-        //     balance_due,
-        //     date, due_date,
-        //     invoice_number,
-        //     currency,
-        //     terms,
-        //     notes,
-        //     fileName)
-        // console.log("Products: ", JSON.parse(products))
-
+        // const uploadDir = path.join(process.cwd(), "public/uploads");
+        // await fs.mkdir(uploadDir, { recursive: true });
 
         const pdfBuffer = await generatePdf(
             {
