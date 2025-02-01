@@ -114,8 +114,8 @@ const TestimonialCarousel = () => {
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious className="gradient-btn" />
-        <CarouselNext className="gradient-btn" />
+        <CarouselPrevious className="gradient-btn hover-color-shadow " />
+        <CarouselNext className="gradient-btn hover-color-shadow" />
       </Carousel>
     </div>
   );

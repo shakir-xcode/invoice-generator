@@ -84,8 +84,12 @@ const PricingSeciton = () => {
                 ))}
               </ul>
               <Button
-                className={`w-full ${index === 1 ? "gradient-btn" : ""}`}
-                variant={index === 1 ? "default" : "outline"}
+                className={`w-full ${
+                  index === 1
+                    ? "gradient-btn hover-color-shadow"
+                    : "hover-shadow"
+                }`}
+                variant={index === 1 ? "default" : "outline_nohover"}
               >
                 Get Started
               </Button>

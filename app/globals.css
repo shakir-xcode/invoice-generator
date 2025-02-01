@@ -96,9 +96,9 @@ body {
   background: linear-gradient(45deg, var(--purple-accent), var(--blue-accent));
   color: white;
 }
-.gradient-btn:hover {
+/* .gradient-btn {
   background: linear-gradient(45deg, var(--blue-accent), var(--purple-accent));
-}
+} */
 
 .gradient-item {
   background: linear-gradient(45deg, var(--purple-accent), var(--blue-accent));
@@ -116,38 +116,6 @@ body {
   background-position: right;
   background-size: 100% 100%;
 }
-
-/* Mesh gradient */
-/* .mesh-gradient {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: radial-gradient(
-      circle at 0% 40%,
-      hsla(var(--primary) / 0.15) 0%,
-      transparent 30%
-    ),
-    radial-gradient(
-      circle at 60% 0%,
-      hsla(var(--chart-1) / 0.15) 0%,
-      transparent 30%
-    ),
-    radial-gradient(
-      circle at 100% 100%,
-      hsla(var(--chart-2) / 0.15) 0%,
-      transparent 30%
-    ),
-    radial-gradient(
-      circle at 60%70%,
-      hsla(var(--chart-4) / 0.15) 0%,
-      transparent 30%
-    );
-  background-size: 200% 200%;
-  animation: gradientMove 15s ease infinite;
-  z-index: 0;
-} */
 
 .mesh-gradient {
   position: absolute;
@@ -296,4 +264,42 @@ body {
   background: linear-gradient(45deg, var(--purple-accent), var(--blue-accent));
   background-clip: text;
   color: transparent;
+}
+
+.hover-color-shadow {
+  /* filter: drop-shadow(0px 0px 0px var(--blue-accent)); */
+  transition: filter 0.3s ease-out;
+}
+.hover-color-shadow:hover {
+  filter: drop-shadow(0px 0px 8px #e02b82b7);
+}
+
+.hover-shadow {
+  filter: drop-shadow(0px 0px 0px #ffffff50);
+  transition: filter 0.3s ease-out;
+}
+
+.hover-shadow:hover {
+  filter: drop-shadow(0px 0px 6px #8080808a);
+}
+
+@property --blr {
+  syntax: "<length>";
+  initial-value: 5px;
+  inherits: false;
+}
+
+.d-shadow {
+  filter: drop-shadow(0px 0px var(--blr) var(--purple-accent));
+  animation: blur 2s linear infinite;
+}
+
+@keyframes blur {
+  50% {
+    --blr: 30px;
+  }
+
+  100% {
+    --blr: 5px;
+  }
 }

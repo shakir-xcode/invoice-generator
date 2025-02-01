@@ -139,12 +139,12 @@ export default function Home() {
             </p>
             <div className="flex flex-cl flex-wrap sm:flex-row gap-4 justify-start">
               <Link href={"#invoice-form"}>
-                <Button size="lg" className=" gradient-shadow text-lg px-8 gradient-btn ">
+                <Button size="lg" className=" hover-color-shadow text-lg px-8 gradient-btn ">
                   Create Invoice
                   <PenBoxIcon />
                 </Button>
               </Link>
-              <Button size="lg" variant="outline" className="text-lg px-8">
+              <Button size="lg" variant="outline_nohover" className="text-lg px-8 hover-shadow ">
                 Learn More
               </Button>
             </div>
@@ -152,7 +152,7 @@ export default function Home() {
         </ScrollAnimated>
 
         <div className="  relative flex justify-center items-center container w-full h-full sm:w-1/2 px-4">
-          <Image priority={false} className=" sm:block  lg:w-[]  rounded-3xl object-cover mx-auto z-10" src="/images/inv.webp" width={1536} height={1536} alt="inovice-img" />
+          <Image priority={false} className=" sm:block lg:w-[]  rounded-3xl object-cover mx-auto z-10 d-shadow" src="/images/inv.webp" width={1536} height={1536} alt="inovice-img" />
         </div>
 
       </section>
@@ -227,7 +227,7 @@ export default function Home() {
               Join thousands of businesses who trust our app to streamline their invoicing.
             </p>
             <Link href={"#invoice-form"}>
-              <Button size="lg" className=" text-primary text-lg px-8 gradient-btn animate-bounce">
+              <Button size="lg" className=" text-primary text-lg px-8 gradient-btn animate-bounce hover-color-shadow">
                 Start Your Free Trial
               </Button>
             </Link>

@@ -70,7 +70,7 @@ const FeatureSection = () => {
           {features.map((feature, index) => (
             <div className="relative" key={index}>
               <div className="absolute h-1.5 -z-1 left-10 right-10  rounded-full gradient-item -top-0.5" />
-              <Card className=" p-6 hover:shadow-lg transition-shadow ">
+              <Card className=" p-6 hover-shadow transition-shadow ">
                 <div className="mb-4 ">{feature.icon}</div>
                 <h3 className="text-xl font-semibold mb-2 ">{feature.title}</h3>
                 <p className="text-muted-foreground">{feature.description}</p>

@@ -236,7 +236,7 @@ export function InvoiceForm() {
               <Button
                 type="submit"
                 disabled={invoiceState?.loading}
-                className="gradient-btn"
+                className="gradient-btn hover-color-shadow"
               >
                 {invoiceState?.loading ? "Generating" : "Generate"}
               </Button>
