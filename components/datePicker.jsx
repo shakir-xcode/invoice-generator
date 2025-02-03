@@ -12,6 +12,7 @@ import { CalendarIcon } from "lucide-react";
 import { Calendar } from "./ui/calendar";
 import { cn } from "@/lib/utils";
 import { format } from "date-fns";
+import "./date-picker.css";
 
 const DatePicker = ({ control, role }) => {
   return (

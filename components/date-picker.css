@@ -1,0 +1,38 @@
+.rdp-root:first-child {
+  padding: 12px;
+}
+
+tr.rdp-weekdays {
+  display: flex;
+  justify-content: space-around;
+}
+
+th.rdp-weekday {
+  font-weight: 500;
+}
+
+.rdp-month_caption {
+  text-align: center;
+}
+
+.rdp-root nav {
+  display: flex;
+  justify-content: space-between;
+}
+.rdp-root nav button {
+  background-color: #ffffff99;
+  border-radius: 5px;
+}
+
+@media (width >= 640px) {
+  .sm\:space-x-4 > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-x-reverse: 0;
+    margin-right: calc(1rem * var(--tw-space-x-reverse));
+    /* margin-left: calc(1rem* calc(1 - var(--tw-space-x-reverse))); */
+    margin-left: 0;
+  }
+}
+
+.rdp-week td button {
+  padding: 7px;
+}
