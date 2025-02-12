@@ -294,6 +294,10 @@ body {
   animation: blur 2s linear infinite;
 }
 
+.rotateZ {
+  transform: rotateZ("60deg");
+}
+
 @keyframes blur {
   50% {
     --blr: 30px;

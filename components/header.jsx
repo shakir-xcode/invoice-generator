@@ -9,7 +9,7 @@ import Link from "next/link";
 const Header = () => {
   const { theme } = useTheme();
   return (
-    <header className="  fixed w-full flex justify-between items-center py-1 px-7 md:px-12 backdrop-blur-lg z-50 ">
+    <header className=" absolute w-full flex justify-between items-center py-1 px-7 md:px-12  z-50 ">
       <p className="hidden">{theme}</p>
       <div className="bg-white/0 rounded-full p-1">
         <Link href={"/"}>

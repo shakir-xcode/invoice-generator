@@ -33,7 +33,7 @@ const CompanyDetails = ({ register, errors }) => {
       <div className="w-full  md:w-[45%] ">
         <div className="grid w-full gap-1.5">
           <Label htmlFor="client-details" className="text-xl text-bold">
-            Bill To
+            Invoice To
           </Label>
           <Textarea
             className="h-32 resize-none"

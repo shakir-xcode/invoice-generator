@@ -31,8 +31,10 @@ export const POST = async (req) => {
             invoice_number,
             currency,
             terms,
-            notes
+            notes,
+            template_id
         } = Object.fromEntries(formData);
+
 
         const pdfBuffer = await generatePdf(
             {
@@ -51,7 +53,8 @@ export const POST = async (req) => {
                 invoice_number,
                 currency,
                 terms,
-                notes
+                notes,
+                template_id
             },
             logo
         )

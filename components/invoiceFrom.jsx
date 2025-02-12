@@ -3,7 +3,7 @@
 import { useForm, useFieldArray, useWatch } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import ProductDetails from "./productDetails";
 import LogoDate from "./logoDate";
 import AmountCalculator from "./amountCalculator";
@@ -12,11 +12,13 @@ import CompanyDetails from "./companyDetails";
 import { formatData } from "@/lib/formatInvoiceData";
 import { SubmissionAlertDialog } from "./submissionAlertDialog";
 import { ScrollAnimated } from "@/animation/animation-wrapper";
+import TemplateCarousl from "./template-carousel";
 
 export function InvoiceForm() {
   const form = useForm({
     defaultValues: {
       logo: null,
+      template_id: "100",
       company_details: "",
       client_details: "",
       products: [{ description: "", rate: 0, quantity: 0, amount: 0 }],
@@ -74,6 +76,7 @@ export function InvoiceForm() {
   const total = watch("total");
   const amount_paid = watch("amount_paid");
   const logo = watch("logo");
+  const templateId = watch("template_id");
 
   //Logo
   useEffect(() => {
@@ -124,6 +127,11 @@ export function InvoiceForm() {
     name: "products",
   });
 
+  // Handle selecting a template
+  const handleSelectTemplate = (tId) => {
+    setValue("template_id", tId);
+  };
+
   async function onSubmit(data) {
     setInvoiceState({
       success: 0,
@@ -131,7 +139,7 @@ export function InvoiceForm() {
       isDialogOpen: false,
       dialogMessage: "",
     });
-    // setInvoiceState((pre) => ({ ...pre, loading: true }));
+
     const formattedData = formatData(data);
     setInvoiceState((pre) => ({ ...pre, isDialogOpen: true }));
 
@@ -233,13 +241,24 @@ export function InvoiceForm() {
                 {...form}
                 selectedCurrency={currency.split("_")[1] || "$"}
               />
-              <Button
-                type="submit"
-                disabled={invoiceState?.loading}
-                className="gradient-btn hover-color-shadow"
-              >
-                {invoiceState?.loading ? "Generating" : "Generate"}
-              </Button>
+
+              <TemplateCarousl
+                control={control}
+                selectedTemplate={templateId}
+              />
+
+              <div className="flex justify-center">
+                <Button
+                  type="submit"
+                  disabled={invoiceState?.loading}
+                  className="gradient-btn hover-color-shadow 
+                  text-xl px-6 
+                "
+                >
+                  {invoiceState?.loading ? "Generating" : "Generate Invoice"}
+                </Button>
+              </div>
+
               <SubmissionAlertDialog
                 success={invoiceState.success}
                 isDialogOpen={invoiceState.isDialogOpen}

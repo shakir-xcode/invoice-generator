@@ -22,7 +22,7 @@ export function SubmissionAlertDialog({
       <AlertDialogTrigger asChild>{children}</AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogTitle className=" flex flex-col gap-4 md:gap-5 justify-center items-center">
+          <AlertDialogTitle className=" flex flex-col gap-2 md:gap-5 justify-center items-center">
             <span className="text-2xl sm:text-3xl md:text-4xl">
               Generating Invoice
             </span>

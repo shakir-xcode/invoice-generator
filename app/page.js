@@ -121,42 +121,46 @@ export default function Home() {
 
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background ">
       {/* Hero Section */}
-      <section className="container mx-auto sm:h-[100svh] flex flex-col sm:flex-row  items-center justify-center pt-[134px] md:pt-[134px] pb-[34px] px-7 ">
-        <ScrollAnimated
-          className="fade-left-initital  sm:w-[60%] sm:px-4 "
-          animationClass="fade-left"
-          threshold={0}
-          triggerOnce={true}
-        >
-          <div className=" flex flex-col justify-center w-full h-full  text-left z-10">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 text-primary">
-              Effortlessly Create Professional<br /> <span className="gradient-text">Invoices</span>
-            </h1>
-            <p className=" md:text-xl text-muted-foreground mb-8 max-w-3xl ">
-              Stop wasting time on manual invoicing. Our app lets you quickly generate professional invoices in seconds. Get paid faster with easy downloads and seamless client communication.
-            </p>
-            <div className="flex flex-cl flex-wrap sm:flex-row gap-4 justify-start">
-              <Link href={"#invoice-form"}>
-                <Button size="lg" className=" hover-color-shadow text-lg px-8 gradient-btn ">
-                  Create Invoice
-                  <PenBoxIcon />
+      <div className="relative ">
+        <section className=" container mx-auto sm:h-[100svh] flex flex-col sm:flex-row 
+       items-center justify-center pt-[134px] md:pt-[134px] pb-[34px] px-7">
+          <div style={{ backgroundSize: '400px 270px' }}
+            className=" absolute inset-0 bg-[url('/images/hero_bg.png')] opacity-40 dark:opacity-5 " />
+          <ScrollAnimated
+            className="fade-left-initital  sm:w-[60%] sm:px-4 "
+            animationClass="fade-left"
+            threshold={0}
+            triggerOnce={true}
+          >
+            <div className=" flex flex-col justify-center w-full h-full  text-left z-10">
+              <h1 className="text-4xl md:text-6xl font-bold mb-6 text-primary">
+                Effortlessly Create Professional<br /> <span className="gradient-text">Invoices</span>
+              </h1>
+              <p className=" md:text-xl text-muted-foreground mb-8 max-w-3xl ">
+                Stop wasting time on manual invoicing. Our app lets you quickly generate professional invoices in seconds. Get paid faster with easy downloads and seamless client communication.
+              </p>
+              <div className="flex flex-cl flex-wrap sm:flex-row gap-4 justify-start">
+                <Link href={"#invoice-form"}>
+                  <Button size="lg" className=" hover-color-shadow text-lg px-8 gradient-btn ">
+                    Create Invoice
+                    <PenBoxIcon />
+                  </Button>
+                </Link>
+                <Button size="lg" variant="outline_nohover" className="text-lg px-8 hover-shadow ">
+                  Learn More
                 </Button>
-              </Link>
-              <Button size="lg" variant="outline_nohover" className="text-lg px-8 hover-shadow ">
-                Learn More
-              </Button>
+              </div>
             </div>
+          </ScrollAnimated>
+
+          <div className="  relative flex justify-center items-center container w-full h-full sm:w-1/2 px-4">
+            <Image priority={false} className=" sm:block lg:w-[]  rounded-3xl object-cover mx-auto z-10 d-shadow" src="/images/inv.webp" width={1536} height={1536} alt="inovice-img" />
           </div>
-        </ScrollAnimated>
 
-        <div className="  relative flex justify-center items-center container w-full h-full sm:w-1/2 px-4">
-          <Image priority={false} className=" sm:block lg:w-[]  rounded-3xl object-cover mx-auto z-10 d-shadow" src="/images/inv.webp" width={1536} height={1536} alt="inovice-img" />
-        </div>
-
-      </section>
-
+        </section>
+      </div>
       {/* Features Section */}
       <section className="py-20 bg-secondary/50 ">
         <FeatureSection />

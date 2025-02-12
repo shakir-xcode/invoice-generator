@@ -13,7 +13,7 @@ import {
 const features = [
   {
     icon: <FileText className="h-6 w-6" />,
-    title: "Customizable Templates",
+    title: "Multiple Template Options",
     description:
       "Choose from a variety of professional templates or create your own branded invoices.",
   },
