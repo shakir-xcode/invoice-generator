@@ -1,5 +1,12 @@
 import { ScrollAnimated } from "@/animation/animation-wrapper";
-import { Award, DollarSign, Star, TrendingUp, Zap } from "lucide-react";
+import {
+  Award,
+  DollarSign,
+  Newspaper,
+  Star,
+  TrendingUp,
+  Zap,
+} from "lucide-react";
 import React from "react";
 
 const benefits = [
@@ -32,6 +39,12 @@ const benefits = [
     description:
       "Project a professional image to your clients with branded invoices.",
   },
+  {
+    icon: <Newspaper className="h-6 w-6" />,
+    title: "Multiple Invoice Templates",
+    description:
+      "Choose from a variety of stylish invoice templates to create professional invoices effortlessly and impress your clients.",
+  },
 ];
 
 const BenefitsSections = () => {
@@ -46,7 +59,7 @@ const BenefitsSections = () => {
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold mb-4">
             Experience the Benefits of Using
-            <br /> <span className="gradient-text">Our App</span>
+            <br /> <span className="gradient-text">StyledInvoice</span>
           </h2>
           <p className="text-xl text-muted-foreground">
             See how our app can transform your business

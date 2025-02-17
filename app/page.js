@@ -1,17 +1,7 @@
 'use client';
 
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-import {
-  CheckCircle,
-  DollarSign,
-  Zap,
-  TrendingUp,
-  Award,
-  Star,
-  PenBoxIcon
-} from "lucide-react";
-import Image from "next/image";
+import { PenBoxIcon } from "lucide-react";
 import TestimonialCarousel from "@/components/testimonial-carousel";
 import { InvoiceForm } from "@/components/invoiceFrom";
 import Link from "next/link";
@@ -19,105 +9,10 @@ import { ScrollAnimated } from "@/animation/animation-wrapper";
 import { FaqAccordion } from "@/components/faq-accordian";
 import FeatureSection from "@/components/featureSection";
 import BenefitsSections from "@/components/benefitsSections";
-import PricingSeciton from "@/components/pricingSeciton";
 
 export default function Home() {
 
   // Gradient colors : #F443E6, 6739B7
-
-
-  const pricing = [
-    {
-      title: "Free",
-      price: "$0",
-      description: "Perfect for getting started",
-      features: [
-        "Up to 5 invoices per month",
-        "Basic templates",
-        "24/7 priority support",
-        "Email support",
-        "Single user",
-        "Client portal"
-      ]
-    },
-    {
-      title: "Standard",
-      price: "$19",
-      description: "Best for small businesses",
-      features: [
-        "Up to 50 invoices per month",
-        "Premium templates",
-        "24/7 priority support",
-        "Priority email support",
-        "Up to 3 users",
-        "Client portal"
-      ]
-    },
-    {
-      title: "Premium",
-      price: "$49",
-      description: "For growing businesses",
-      features: [
-        "Unlimited invoices",
-        "Custom templates",
-        "24/7 priority support",
-        "Unlimited users",
-        "Advanced analytics",
-        "API access"
-      ]
-    }
-  ];
-
-  const testimonials = [
-    {
-      name: "Sarah Johnson",
-      company: "Design Studio Co.",
-      image:
-        "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&h=150",
-      testimonial:
-        "This invoice generator has transformed how we handle our billing. It's intuitive, professional, and saves us hours every week.",
-    },
-    {
-      name: "Michael Chen",
-      company: "Tech Solutions Inc.",
-      image:
-        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&h=150",
-      testimonial:
-        "The automated calculations and tracking features have eliminated errors and improved our cash flow significantly.",
-    },
-    {
-      name: "Sarah Johnson",
-      company: "Design Studio Co.",
-      image:
-        "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&h=150",
-      testimonial:
-        "This invoice generator has transformed how we handle our billing. It's intuitive, professional, and saves us hours every week.",
-    },
-    {
-      name: "Michael Chen",
-      company: "Tech Solutions Inc.",
-      image:
-        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&h=150",
-      testimonial:
-        "The automated calculations and tracking features have eliminated errors and improved our cash flow significantly.",
-    },
-    {
-      name: "Sarah Johnson",
-      company: "Design Studio Co.",
-      image:
-        "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&h=150",
-      testimonial:
-        "This invoice generator has transformed how we handle our billing. It's intuitive, professional, and saves us hours every week.",
-    },
-    {
-      name: "Michael Chen",
-      company: "Tech Solutions Inc.",
-      image:
-        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&h=150",
-      testimonial:
-        "The automated calculations and tracking features have eliminated errors and improved our cash flow significantly.",
-    },
-  ];
 
 
   return (
@@ -125,62 +20,57 @@ export default function Home() {
       {/* Hero Section */}
       <div className="relative ">
         <section className=" container mx-auto sm:h-[100svh] flex flex-col sm:flex-row 
-       items-center justify-center pt-[134px] md:pt-[134px] pb-[34px] px-7">
-          <div style={{ backgroundSize: '400px 270px' }}
-            className=" absolute inset-0 bg-[url('/images/hero_bg.png')] opacity-40 dark:opacity-5 " />
-          <ScrollAnimated
-            className="fade-left-initital  sm:w-[60%] sm:px-4 "
-            animationClass="fade-left"
-            threshold={0}
-            triggerOnce={true}
-          >
-            <div className=" flex flex-col justify-center w-full h-full  text-left z-10">
-              <h1 className="text-4xl md:text-6xl font-bold mb-6 text-primary">
-                Effortlessly Create Professional<br /> <span className="gradient-text">Invoices</span>
-              </h1>
-              <p className=" md:text-xl text-muted-foreground mb-8 max-w-3xl ">
-                Stop wasting time on manual invoicing. Our app lets you quickly generate professional invoices in seconds. Get paid faster with easy downloads and seamless client communication.
-              </p>
-              <div className="flex flex-cl flex-wrap sm:flex-row gap-4 justify-start">
-                <Link href={"#invoice-form"}>
-                  <Button size="lg" className=" hover-color-shadow text-lg px-8 gradient-btn ">
-                    Create Invoice
-                    <PenBoxIcon />
-                  </Button>
-                </Link>
-                <Button size="lg" variant="outline_nohover" className="text-lg px-8 hover-shadow ">
-                  Learn More
-                </Button>
-              </div>
-            </div>
-          </ScrollAnimated>
+       items-center justify-center pt-[134px] md:pt-[134px] pb-[64px] px-7">
 
-          <div className="  relative flex justify-center items-center container w-full h-full sm:w-1/2 px-4">
-            <Image priority={false} className=" sm:block lg:w-[]  rounded-3xl object-cover mx-auto z-10 d-shadow" src="/images/inv.webp" width={1536} height={1536} alt="inovice-img" />
+          <div className=" absolute inset-0 mesh-gradient " />
+          <div className=" flex flex-col justify-center w-full h-full text-center z-10">
+            <div className="flex items-center justify-center mx-auto gap-1 w-fit px-4 py-1 mb-6 rounded-3xl  border border-primary/50 ">
+              <span className="w-4 h-[1px] bg-primary/50" />
+              <h1 className=" font-bold text-primary/80">Free Invoice Generator</h1>
+              <span className="w-4 h-[1px] bg-primary/50" />
+            </div>
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 text-primary tracking-tight">
+              Effortlessly Create Professional<br /> <span className="gradient-text">Invoices</span>
+            </h2>
+            <p className=" md:text-xl text-primary/70 mb-8 max-w-3xl mx-auto ">
+              Simplify invoicing with our invoice generator. Choose from a variety of invoice templates, create professional invoices and get paid faster with easy downloads.
+            </p>
+
+            <div className="  flex sm:flex-row gap-4 justify-center">
+              <Link href={"#invoice-form"}>
+                <Button size="lg" className=" hover-color-shadow text-lg px-8 gradient-btn ">
+                  Create Invoice
+                  <PenBoxIcon />
+                </Button>
+              </Link>
+              {/* <Button size="lg" variant="outline_nohover" className="text-lg px-8 hover-shadow ">
+                Learn More
+              </Button> */}
+            </div>
           </div>
+
+          {/* <div className="  relative flex justify-center items-center container w-full h-full sm:w-1/2 px-4">
+            <Image priority={false} className=" sm:block lg:w-[]  rounded-3xl object-cover mx-auto z-10 d-shadow" src="/images/inv.webp" width={1536} height={1536} alt="inovice-img" />
+          </div> */}
 
         </section>
       </div>
-      {/* Features Section */}
-      <section className="py-20 bg-secondary/50 ">
-        <FeatureSection />
-      </section>
-
-
-      {/* Invoice Form */}
-      <section id="invoice-form" className="py-20 ">
-        <InvoiceForm />
-      </section>
 
       {/* Benefits Section */}
-      <section className="py-20 bg-secondary/50">
+      <section className="py-20 ">
         <BenefitsSections />
       </section>
 
-      {/* Pricing Section */}
-      <section className="py-20 ">
-        <PricingSeciton />
+      {/* Invoice Form */}
+      <section id="invoice-form" className="py-20 bg-secondary/50">
+        <InvoiceForm />
       </section>
+
+      {/* Features Section */}
+      <section className="py-20  ">
+        <FeatureSection />
+      </section>
+
 
       {/* Testimonials Section */}
       <section className="py-20 bg-secondary/50">
@@ -232,7 +122,7 @@ export default function Home() {
             </p>
             <Link href={"#invoice-form"}>
               <Button size="lg" className=" text-primary text-lg px-8 gradient-btn animate-bounce hover-color-shadow">
-                Start Your Free Trial
+                Start Invoicing Now
               </Button>
             </Link>
 

@@ -118,27 +118,27 @@ body {
 }
 
 .mesh-gradient {
-  position: absolute;
+  /* position: absolute;
   top: 0;
   left: 0;
   right: 0;
-  bottom: 0;
+  bottom: 0; */
   background: radial-gradient(
-      circle at 58% 50%,
-      hsla(var(--chart-1) / 0.5) 30%,
-      transparent 55%
+      circle at -70% -70%,
+      var(--purple-accent) -10%,
+      transparent 75%
     ),
     radial-gradient(
-      circle at 0% 0%,
-      hsla(var(--chart-3) / 0.4) 30%,
-      transparent 65%
+      circle at 150% 150%,
+      var(--blue-accent) -10%,
+      transparent 75%
     );
 
   background-size: 100% 100%;
   z-index: 0;
 }
 
-@media (max-width: 940px) {
+/* @media (max-width: 940px) {
   .mesh-gradient {
     background: radial-gradient(
       circle at 50% 50%,
@@ -146,7 +146,7 @@ body {
       transparent 57%
     );
   }
-}
+} */
 
 @keyframes gradientMove {
   0% {

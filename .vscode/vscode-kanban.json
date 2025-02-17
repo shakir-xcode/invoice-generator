@@ -4,24 +4,42 @@
       "assignedTo": {
         "name": "Shakir"
       },
-      "creation_time": "2025-01-27T06:09:49.731Z",
-      "id": "12",
+      "creation_time": "2025-02-01T13:24:03.864Z",
+      "id": "15",
       "references": [],
-      "title": "section for elements of invoice"
+      "title": "keep puppeteer awake"
     },
     {
       "assignedTo": {
         "name": "Shakir"
       },
-      "creation_time": "2025-02-01T13:24:03.864Z",
-      "id": "15",
+      "creation_time": "2025-02-16T06:42:03.005Z",
+      "id": "20",
       "references": [],
-      "title": "keep puppeteer awake"
+      "title": "register sitemap in google console"
+    },
+    {
+      "assignedTo": {
+        "name": "Shakir"
+      },
+      "creation_time": "2025-01-27T06:09:49.731Z",
+      "id": "12",
+      "references": [],
+      "title": "section for elements of invoice"
     }
   ],
   "in-progress": [],
   "testing": [],
   "done": [
+    {
+      "assignedTo": {
+        "name": "Shakir"
+      },
+      "creation_time": "2025-02-16T07:01:43.284Z",
+      "id": "23",
+      "references": [],
+      "title": "add OG image"
+    },
     {
       "assignedTo": {
         "name": "Shakir"
@@ -138,6 +156,51 @@
       "id": "8",
       "references": [],
       "title": "test invoice logo"
+    },
+    {
+      "assignedTo": {
+        "name": "Shakir"
+      },
+      "creation_time": "2025-02-16T06:23:31.605Z",
+      "id": "16",
+      "references": [],
+      "title": "update Logo and Title"
+    },
+    {
+      "assignedTo": {
+        "name": "Shakir"
+      },
+      "creation_time": "2025-02-16T06:29:12.697Z",
+      "id": "18",
+      "references": [],
+      "title": "update robot.txt link"
+    },
+    {
+      "assignedTo": {
+        "name": "Shakir"
+      },
+      "creation_time": "2025-02-16T06:41:36.325Z",
+      "id": "19",
+      "references": [],
+      "title": "update sitemap link"
+    },
+    {
+      "assignedTo": {
+        "name": "Shakir"
+      },
+      "creation_time": "2025-02-16T06:50:09.767Z",
+      "id": "21",
+      "references": [],
+      "title": "update title in metadata, schema ld, opengraph"
+    },
+    {
+      "assignedTo": {
+        "name": "Shakir"
+      },
+      "creation_time": "2025-02-16T06:24:18.639Z",
+      "id": "17",
+      "references": [],
+      "title": "update url"
     }
   ]
 }

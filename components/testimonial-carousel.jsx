@@ -28,37 +28,23 @@ const testimonials = [
     testimonial:
       "The automated calculations and tracking features have eliminated errors and improved our cash flow significantly.",
   },
+
   {
-    name: "Sarah Johnson",
-    company: "Design Studio Co.",
-    image:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&h=150",
-    testimonial:
-      "The automated calculations and tracking features have eliminated errors and improved our cash flow significantly.",
-  },
-  {
-    name: "Michael Chen",
+    name: "David Miller",
     company: "Tech Solutions Inc.",
     image:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&h=150",
+      "https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?auto=format&fit=crop&w=150&h=150",
     testimonial:
-      "The automated calculations and tracking features have eliminated errors and improved our cash flow significantly.",
+      "StyledInvoice has completely streamlined our invoicing process. The customizable invoice templates save us time and make our invoices look professional.",
   },
+
   {
-    name: "Sarah Johnson",
-    company: "Design Studio Co.",
+    name: "Emily Carter",
+    company: "Freelance Writer",
     image:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&h=150",
+      "https://images.unsplash.com/photo-1520813792240-56fc4a3765a7?auto=format&fit=crop&w=150&h=150",
     testimonial:
-      "The automated calculations and tracking features have eliminated errors and improved our cash flow significantly.",
-  },
-  {
-    name: "Michael Chen",
-    company: "Tech Solutions Inc.",
-    image:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&h=150",
-    testimonial:
-      "The automated calculations and tracking features have eliminated errors and improved our cash flow significantly.",
+      "As a freelancer, I needed a simple yet powerful invoice generator. StyledInvoice makes it easy to send invoices and get paid on time!",
   },
 ];
 
@@ -71,15 +57,17 @@ const TestimonialCarousel = () => {
           <br /> <span className="gradient-text">About Us</span>
         </h2>
         <p className="text-xl text-muted-foreground">
-          Hear from satisfied businesses using our app
+          Hear from satisfied businesses using StyledInvoice
         </p>
       </div>
       <Carousel
-        plugins={[
-          Autoplay({
-            delay: 2000,
-          }),
-        ]}
+        plugins={
+          [
+            // Autoplay({
+            //   delay: 2000,
+            // }),
+          ]
+        }
         className="w-[94%] mx-auto "
       >
         <CarouselContent>

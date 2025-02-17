@@ -2,7 +2,7 @@ import React from "react";
 import { Label } from "./ui/label";
 import { Textarea } from "./ui/textarea";
 
-const CompanyDetails = ({ register, errors }) => {
+const CompanyDetails = React.memo(({ register, errors }) => {
   return (
     <div className=" flex flex-col md:flex-row justify-between gap-5 ">
       <div className="w-full  md:w-[45%] ">
@@ -56,6 +56,6 @@ const CompanyDetails = ({ register, errors }) => {
       </div>
     </div>
   );
-};
+});
 
 export default CompanyDetails;

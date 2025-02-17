@@ -16,12 +16,12 @@ const Header = () => {
           <Image
             src={
               theme?.toLowerCase() === "light"
-                ? "/images/logo.webp"
-                : "/images/logo-dark.webp"
+                ? "/images/logo.png"
+                : "/images/logo-dark.png"
             }
             width={540}
             height={540}
-            className="w-[64px]"
+            className="w-[82px]"
             alt="logo"
           />
         </Link>

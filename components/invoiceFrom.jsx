@@ -201,11 +201,11 @@ export function InvoiceForm() {
         <h2 className="text-4xl font-bold mb-4">
           Create Your <span className="gradient-text">Invoice</span>
         </h2>
-        <p className="text-xl text-muted-foreground">
-          Simple tools for creating stunning invoices
-        </p>
+        <h3 className="text-xl text-muted-foreground">
+          Simple tools for creating stylish invoices
+        </h3>
       </div>
-      <div className="relative border bg-secondary/50 py-12 px-4 md:px-12 rounded-lg">
+      <div className="relative border bg-white dark:bg-black py-12 px-4 md:px-12 rounded-lg ">
         <div className="absolute h-1.5 -z-1 left-10 right-10  rounded-full gradient-item -top-0.5" />
         <ScrollAnimated
           className="child-one"
