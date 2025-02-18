@@ -28,6 +28,9 @@ const geistMono = Geist_Mono({
 export const metadata = {
   title: METADATA_TITLE,
   description: METADATA_DESCRIPTION,
+  verification: {
+    google: "rdPfbV8nxc_PceZN5ZbamPLO_XrtPcIXX0Cjc_i47vM",
+  },
   openGraph: {
     title: OG_TITLE,
     description: OG_DESCRIPTION,
