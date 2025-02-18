@@ -28,7 +28,17 @@
       "title": "section for elements of invoice"
     }
   ],
-  "in-progress": [],
+  "in-progress": [
+    {
+      "assignedTo": {
+        "name": "Shakir"
+      },
+      "creation_time": "2025-02-17T16:33:20.800Z",
+      "id": "24",
+      "references": [],
+      "title": "add canonical tag"
+    }
+  ],
   "testing": [],
   "done": [
     {
@@ -138,6 +148,15 @@
       "id": "5",
       "references": [],
       "title": "popups using responses"
+    },
+    {
+      "assignedTo": {
+        "name": "Shakir"
+      },
+      "creation_time": "2025-02-17T16:33:35.938Z",
+      "id": "25",
+      "references": [],
+      "title": "rename robot.txt"
     },
     {
       "assignedTo": {

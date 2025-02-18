@@ -47,6 +47,9 @@ export const metadata = {
     title: TITLE,
     description: SOCIAL_DESCRIPTION,
     images: [`${URL}/images/logo.png`]
+  },
+  alternates: {
+    canonical: "https://styled-invoice.vercel.app",
   }
 };
 

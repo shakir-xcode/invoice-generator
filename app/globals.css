@@ -96,9 +96,6 @@ body {
   background: linear-gradient(45deg, var(--purple-accent), var(--blue-accent));
   color: white;
 }
-/* .gradient-btn {
-  background: linear-gradient(45deg, var(--blue-accent), var(--purple-accent));
-} */
 
 .gradient-item {
   background: linear-gradient(45deg, var(--purple-accent), var(--blue-accent));
@@ -118,11 +115,6 @@ body {
 }
 
 .mesh-gradient {
-  /* position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0; */
   background: radial-gradient(
       circle at -70% -70%,
       var(--purple-accent) -10%,

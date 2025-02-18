@@ -29,8 +29,7 @@ const TemplateCarousl = React.memo(({ control, selectedTemplate }) => {
   return (
     <div className="container px-10 mx-auto">
       <div className=" flex justify-center gap-2 py-3 text-2xl font-bold gradient-text">
-        <p>Choose</p>
-        <h2 className="">Invoice Template</h2>
+        <h2 className="">Choose Invoice Template</h2>
       </div>
       <div className="">
         <FormField

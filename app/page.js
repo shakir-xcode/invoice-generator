@@ -30,7 +30,7 @@ export default function Home() {
               <span className="w-4 h-[1px] bg-primary/50" />
             </div>
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 text-primary tracking-tight">
-              Effortlessly Create Professional<br /> <span className="gradient-text">Invoices</span>
+              Effortlessly Create Professional <br /><span className="gradient-text">Invoices</span>
             </h2>
             <p className=" md:text-xl text-primary/70 mb-8 max-w-3xl mx-auto ">
               Simplify invoicing with our invoice generator. Choose from a variety of invoice templates, create professional invoices and get paid faster with easy downloads.
