@@ -26,6 +26,24 @@
       "id": "12",
       "references": [],
       "title": "section for elements of invoice"
+    },
+    {
+      "assignedTo": {
+        "name": "Shakir"
+      },
+      "creation_time": "2025-02-18T16:39:39.744Z",
+      "id": "26",
+      "references": [],
+      "title": "space in title"
+    },
+    {
+      "assignedTo": {
+        "name": "Shakir"
+      },
+      "creation_time": "2025-02-18T16:39:52.008Z",
+      "id": "27",
+      "references": [],
+      "title": "og-sitename"
     }
   ],
   "in-progress": [

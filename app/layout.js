@@ -1,4 +1,4 @@
-
+import { Analytics } from '@vercel/analytics/next';
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -100,6 +100,7 @@ export default function RootLayout({ children }) {
         >
           <Header />
           {children}
+	  <Analytics/>
           <footer className=" bg-secondary/50 transition ">
             <div className=" py-2  mx-auto gradient-item">
               <div className=" text-center text-white/70 ">
