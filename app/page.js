@@ -5,6 +5,7 @@ import { PenBoxIcon } from "lucide-react";
 import TestimonialCarousel from "@/components/testimonial-carousel";
 import { InvoiceForm } from "@/components/invoiceFrom";
 import Link from "next/link";
+import Image from "next/image"
 import { ScrollAnimated } from "@/animation/animation-wrapper";
 import { FaqAccordion } from "@/components/faq-accordian";
 import FeatureSection from "@/components/featureSection";
@@ -16,23 +17,23 @@ export default function Home() {
 
 
   return (
-    <div className="min-h-screen bg-background ">
+    <div className="bg-background ">
       {/* Hero Section */}
-      <div className="relative ">
-        <section className=" container mx-auto sm:h-[100svh] flex flex-col sm:flex-row 
-       items-center justify-center pt-[134px] md:pt-[134px] pb-[64px] px-7">
+      <div className="relative container mx-auto">
+        <section className="  mx-auto md:h-[670px] flex flex-col md:flex-row 
+        justify-center pt-[134px] md:pt-[134px] pb-[64px] px-7">
 
-          <div className=" absolute inset-0 mesh-gradient " />
-          <div className=" flex flex-col justify-center w-full h-full text-center z-10">
-            <div className="flex items-center justify-center mx-auto gap-1 w-fit px-4 py-1 mb-6 rounded-3xl  border border-primary/50 ">
+          {/* <div className=" absolute inset-0 mesh-gradient " /> */}
+          <div className=" flex flex-col justify-center items-start z-10">
+            <div className="flex items-center justify-center gap-1 w-fit px-4 py-1 mb-6 rounded-3xl  border border-primary/50 ">
               <span className="w-4 h-[1px] bg-primary/50" />
               <h1 className=" font-bold text-primary/80">Free Invoice Generator</h1>
               <span className="w-4 h-[1px] bg-primary/50" />
             </div>
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 text-primary tracking-tight">
-              Effortlessly Create Professional <br /><span className="gradient-text">Invoices</span>
+            <h2 className="text-3xl sm:text-4xl lg:text-6xl font-bold mb-6 text-primary tracking-tight">
+              Effortlessly Create Professional <span className="gradient-text">Invoices</span>
             </h2>
-            <p className=" md:text-xl text-primary/70 mb-8 max-w-3xl mx-auto ">
+            <p className="  text-primary/70 mb-8 max-w-3xl ">
               Simplify invoicing with our invoice generator. Choose from a variety of invoice templates, create professional invoices and get paid faster with easy downloads.
             </p>
 
@@ -49,9 +50,18 @@ export default function Home() {
             </div>
           </div>
 
-          {/* <div className="  relative flex justify-center items-center container w-full h-full sm:w-1/2 px-4">
-            <Image priority={false} className=" sm:block lg:w-[]  rounded-3xl object-cover mx-auto z-10 d-shadow" src="/images/inv.webp" width={1536} height={1536} alt="inovice-img" />
-          </div> */}
+          <div className="w-[400px] self-center h-[200px] lg:w-[700px] lg:h-[400px] mt-[100px] md:mt-0 relative flex justify-center items-center ">
+            <Image priority={false}
+              className=" rounded-3xl z-10 d-shadow"
+              style={{
+                width: "100%",
+                height: "auto",
+              }}
+              width="400"
+              height="300"
+              src="/images/inv2.png"
+              alt="inovice-img" />
+          </div>
 
         </section>
       </div>

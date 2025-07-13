@@ -283,7 +283,7 @@ body {
 
 .d-shadow {
   filter: drop-shadow(0px 0px var(--blr) var(--purple-accent));
-  animation: blur 2s linear infinite;
+  animation: blur 4s linear infinite;
 }
 
 .rotateZ {
@@ -299,3 +299,13 @@ body {
     --blr: 5px;
   }
 }
+
+.radio-group-item {
+  @apply w-10 h-2 rounded-full;
+}
+
+/* .radio-group-item span {
+  color: red;
+  background-color: red;
+  z-index: 10;
+} */

@@ -60,7 +60,7 @@ const TemplateCarousl = React.memo(({ control, selectedTemplate }) => {
                               className="font-normal cursor-pointer"
                             >
                               <div
-                                className={`p-[2px] rounded-[10px] ${
+                                className={`p-[4px] rounded-[10px] ${
                                   selectedTemplate === template.templateId
                                     ? "gradient-item"
                                     : "bg-primary/20"
@@ -80,7 +80,7 @@ const TemplateCarousl = React.memo(({ control, selectedTemplate }) => {
                             <FormControl>
                               <RadioGroupItem
                                 value={template.templateId}
-                                className=" hidden"
+                                className={`w-10 h-2 border-none data-[state=checked]:bg-gradient-to-r data-[state=checked]:from-[--blue-accent] data-[state=checked]:to-[--purple-accent] data-[state=unchecked]:bg-gray-300 text-transparent`}
                               />
                             </FormControl>
                           </FormItem>
@@ -89,7 +89,7 @@ const TemplateCarousl = React.memo(({ control, selectedTemplate }) => {
                     </CarouselContent>
                     <CarouselPrevious
                       type="button"
-                      className="gradient-btn hover-color-shadow w-10 h-10"
+                      className="gradient-btn hover-color-shadow w-10 h-10 "
                     />
                     <CarouselNext
                       type="button"
